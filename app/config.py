@@ -1,9 +1,10 @@
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import json, os
+from pathlib import Path
 class Settings:
-    APP_NAME=os.getenv("APP_NAME","Sistema Controlo"); HOST=os.getenv("HOST","0.0.0.0"); PORT=int(os.getenv("PORT","80"))
-    DATABASE_URL=os.getenv("DATABASE_URL","sqlite:///./database/controlo.db"); SESSION_SECRET=os.getenv("SESSION_SECRET","dev-secret-change-me")
-    ADMIN_USERNAME=os.getenv("ADMIN_USERNAME","admin"); ADMIN_PASSWORD=os.getenv("ADMIN_PASSWORD","admin123")
-    DEMO_MODE=os.getenv("DEMO_MODE","true").lower()=="true"; SERVER_URL=os.getenv("SERVER_URL","").rstrip("/")
+    def __init__(self):
+        path=Path(os.getenv("CONFIG_FILE","config.json"))
+        data=json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        self.APP_NAME=data.get("app_name","Sistema Controlo"); self.HOST=data.get("host","0.0.0.0"); self.PORT=int(data.get("port",80))
+        self.DATABASE_URL=data.get("database_url","sqlite:///./database/controlo.db"); self.SESSION_SECRET=data.get("session_secret","dev-secret-change-me")
+        self.ADMIN_USERNAME=data.get("admin_username","admin"); self.ADMIN_PASSWORD=data.get("admin_password","admin123"); self.DEMO_MODE=bool(data.get("demo_mode",True)); self.SERVER_URL=str(data.get("server_url","")).rstrip("/")
 settings=Settings()
