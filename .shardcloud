@@ -1,7 +1,6 @@
 DISPLAY_NAME=Sistema Controlo
 DESCRIPTION=Plataforma web de gestão de dispositivos Android autorizados
-MAIN=starter.py
+MAIN=main.py
 MEMORY=1024
 VERSION=recommended
 LANGUAGE=python
-CUSTOM_COMMAND=python starter.py
