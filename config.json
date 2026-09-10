@@ -1,0 +1,11 @@
+{
+  "app_name": "Sistema Controlo",
+  "host": "0.0.0.0",
+  "port": 80,
+  "database_url": "sqlite:///./database/controlo.db",
+  "session_secret": "change-this-secret",
+  "admin_username": "admin",
+  "admin_password": "admin123",
+  "demo_mode": true,
+  "server_url": ""
+}
