@@ -5,3 +5,4 @@ LANGUAGE=python
 MEMORY=5120
 VERSION=recommended
 CUSTOM_COMMAND=python main.py
+SUBDOMAIN=sistemacontrolo
